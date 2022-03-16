@@ -1,5 +1,5 @@
 {
-    "name": "eureka_maqueen3",
+    "name": "iMaqueenMaqueenの無線コントロール",
     "version": "0.0.0",
     "description": "",
     "dependencies": {
@@ -25,5 +25,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }
