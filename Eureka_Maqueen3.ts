@@ -123,7 +123,7 @@ namespace eureka_Maqueen {
 
   //% color="#009A00" weight=20 block="Distance is |%nagasa| than |%limit|(cm)" group="3 超音波きょりｾﾝｻｰ"
   //% limit.min=5 limit.max=30
-  export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
+  export function sonar_ping_3( nagasa:kyori,limit: number): boolean {
     switch(nagasa){
         case kyori.short:
         if (maqueen.Ultrasonic(PingUnit.Centimeters) < limit) {
