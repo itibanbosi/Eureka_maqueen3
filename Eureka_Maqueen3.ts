@@ -7,6 +7,29 @@ enum direction {
     back,
     stop
 }
+enum whiteblack{
+黒,
+白,
+}
+
+enum lotation{
+    左,
+    右,
+}
+enum car_LED_onoff{
+    無効,
+    有効,
+}
+
+enum kyori{
+    短い,
+    長い,
+}
+
+enum light_sensor{
+    暗い,
+    明るい,
+}
 
 //% color="#3943c6" block="Eureka Maqueen" icon="\uf1b9"
 namespace eureka_Maqueen {
@@ -98,11 +121,153 @@ namespace eureka_Maqueen {
                 break;
         }
     }
+  //% color="#1E90FF" weight=51 blockId=wait_time1
+  //% block="待ち時間 |%second| （秒) " group="2　基本の動き"
+  export function wait_time1(second: number): void {
+    basic.pause(second*1000);
+  }
+
+  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ" group="3 超音波きょりｾﾝｻｰ"
+  export function sonar_ping_2() :number{
+    let  d1=0;
+    let  d2=0;
+
+    for ( let i=0 ; i<2 ; i++ ){
+    // send
+    basic.pause(5);
+    pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
+    pins.digitalWritePin(DigitalPin.P8, 0);
+    control.waitMicros(2);
+    pins.digitalWritePin(DigitalPin.P8, 1);
+    control.waitMicros(10);
+    pins.digitalWritePin(DigitalPin.P8, 0);
+    // read
+    d1 = pins.pulseIn(DigitalPin.P16, PulseValue.High, 500 * 58);
+    d2=d2+d1;
+    }
+    return Math.round(Math.idiv(d2/2, 58) * 1.5) ;
+  }
+
+
+  //% color="#009A00" weight=21 blockId=sonar_ping_LED block="きょりを表示する" group="3 超音波きょりｾﾝｻｰ"
+  export function sonar_ping_LED() { 
+    basic.showNumber(sonar_ping_2());
+  }
+
+
+  
 
 
 
+  //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="3 超音波きょりｾﾝｻｰ"
+  //% limit.min=0 limit.max=30
+  export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
+    let  d1=0;
+    let  d2=0;
 
+    for ( let i=0 ; i<2 ; i++ ){
+    // send
+    basic.pause(5);
+    pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
+    pins.digitalWritePin(DigitalPin.P8, 0);
+    control.waitMicros(2);
+    pins.digitalWritePin(DigitalPin.P8, 1);
+    control.waitMicros(10);
+    pins.digitalWritePin(DigitalPin.P8, 0);
+    // read
+    d1 = pins.pulseIn(DigitalPin.P16, PulseValue.High, 500 * 58);
+    d2= d1+d2;
+    }
+    switch(nagasa){
+        case kyori.短い:
+        if (Math.idiv(d2/2, 58) * 1.5 < limit) {
+        return true;
+        } else {
+        return false;
+        }
+        break;
+        case kyori.長い:
+        if (Math.idiv(d2/2, 58) * 1.5 < limit) {
+        return false;
+        } else {
+        return true;
+        }
+        break;        
+    }
+  }
+
+
+//% color="#6041f1"  weight=23 block="右だけが |%wb| をふんだ時 " group="4　センサー" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
+//% sence.min=10 sence.max=40
+  export function photo_R_out( wb: whiteblack): boolean {
+
+    switch(wb){
+        case whiteblack.黒:
+            if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
+            return true;
+            } else {
+            return false;
+            }
+        break;
+        case whiteblack.白:
+            if  ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
+            return true;
+            } else {
+            return false;
+            }
+        break;
+        }
+    }
+  }
+
+  //% color="#6041f1"  weight=24 block="左だけが |%wb| をふんだ時 " group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ" 
+  export function photo_L_out( wb: whiteblack): boolean {
+
+    switch(wb){
+        case whiteblack.黒:
+            if  ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
+            return true;
+            } else {
+            return false;
+            }
+        break;
+        case whiteblack.白:
+             if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
+            return true;
+            } else {
+            return false;
+            }                   
+        break;
+    }
+  }
+  //% color="#6041f1"  weight=25 block="左右とも |%wb| をふんでいる時  " group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
+  export function photo_LR_out(wb: whiteblack): boolean {
+
+
+    switch(wb){
+        case whiteblack.黒:
+             if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1))
+             {
+            return true;
+            } else {
+            return false;
+            }
+        break;
+
+        case whiteblack.白:
+    
+             if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1))
+             {
+            return true;
+            } else {
+            return false;
+            }
+        break;
+    }
 }
+
+
+
 
 
 
