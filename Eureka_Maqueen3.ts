@@ -142,7 +142,7 @@ namespace eureka_Maqueen {
     }
   }
 
-//% color="#6041f1"  weight=23 block="右だけが |%wb| をふんだ時 " group="4　センサー" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
+//% color="#6041f1"  weight=23 block="Only Right stepped on|%wb|" group="4　センサー" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
   export function photo_R_out( wb: whiteblack): boolean {
     switch(wb){
         case whiteblack.black:
@@ -163,7 +163,7 @@ namespace eureka_Maqueen {
     }
 
 
-  //% color="#6041f1"  weight=24 block="左だけが |%wb| をふんだ時 " group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ" 
+  //% color="#6041f1"  weight=24 block="Only Left stepped on|%wb|" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ" 
   export function photo_L_out( wb: whiteblack): boolean {
 
     switch(wb){
@@ -184,7 +184,7 @@ namespace eureka_Maqueen {
     }
   }
  
-  //% color="#6041f1"  weight=25 block="左右とも |%wb| をふんでいる時  " group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
+  //% color="#6041f1"  weight=25 block="Stepped onboth sides|%wb|" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
   export function photo_LR_out(wb: whiteblack): boolean {
     switch(wb){
         case whiteblack.black:
