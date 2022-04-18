@@ -169,7 +169,7 @@ namespace eureka_Maqueen {
         break;
         }
     }
-  }
+
 
   //% color="#6041f1"  weight=24 block="左だけが |%wb| をふんだ時 " group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ" 
   export function photo_L_out( wb: whiteblack): boolean {
@@ -211,12 +211,11 @@ namespace eureka_Maqueen {
             return false;
             }
         break;
+        }
     }
-}
 
 }
 
-}
 
 
 
