@@ -8,27 +8,18 @@ enum direction {
     stop
 }
 enum whiteblack{
-    黒,
-    白,
+    black,
+    white,
 }
 
 enum lotation{
-    左,
-    右,
-}
-enum car_LED_onoff{
-    無効,
-    有効,
+    left,
+    right,
 }
 
 enum kyori{
-    短い,
-    長い,
-}
-
-enum light_sensor{
-    暗い,
-    明るい,
+    short,
+    long,
 }
 
 //% color="#3943c6" block="Eureka Maqueen" icon="\uf1b9"
@@ -90,7 +81,7 @@ namespace eureka_Maqueen {
     }
     
     //% color="#3943c6" weight=70　blockId=moving2
-    //% block="|%sinkou_houkou|へ　出力|%Power|" group="1　基本の動き"
+    //% block="To|%sinkou_houkou|　Power|%Power|" group="1　基本の動き"
     //% Power.min=0 Power.max=255
     export function car_derection(sinkou_houkou: direction, Power: number): void {
         switch (sinkou_houkou) {
@@ -125,23 +116,23 @@ namespace eureka_Maqueen {
     }
 
   //% color="#1E90FF" weight=51 blockId=wait_time1
-  //% block="待ち時間 |%second| （秒) " group="1　基本の動き"
+  //% block="wait time |%second|(sec) " group="1　基本の動き"
   export function wait_time1(second: number): void {
     basic.pause(second*1000);
   }
 
-  //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="3 超音波きょりｾﾝｻｰ"
+  //% color="#009A00" weight=20 block="Distance is |%nagasa| than |%limit|(cm)" group="3 超音波きょりｾﾝｻｰ"
   //% limit.min=5 limit.max=30
   export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
     switch(nagasa){
-        case kyori.短い:
+        case kyori.short:
         if (maqueen.Ultrasonic(PingUnit.Centimeters) < limit) {
         return true;
         } else {
         return false;
         }
         break;
-        case kyori.長い:
+        case kyori.long:
         if (maqueen.Ultrasonic(PingUnit.Centimeters) < limit) {
         return false;
         } else {
@@ -154,14 +145,14 @@ namespace eureka_Maqueen {
 //% color="#6041f1"  weight=23 block="右だけが |%wb| をふんだ時 " group="4　センサー" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
   export function photo_R_out( wb: whiteblack): boolean {
     switch(wb){
-        case whiteblack.黒:
+        case whiteblack.black:
             if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 0)) {
             return true;
             } else {
             return false;
             }
         break;
-        case whiteblack.白:
+        case whiteblack.white:
             if  ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
             return true;
             } else {
@@ -176,14 +167,14 @@ namespace eureka_Maqueen {
   export function photo_L_out( wb: whiteblack): boolean {
 
     switch(wb){
-        case whiteblack.黒:
+        case whiteblack.black:
             if  ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
             return true;
             } else {
             return false;
             }
         break;
-        case whiteblack.白:
+        case whiteblack.white:
              if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 0)) {
             return true;
             } else {
@@ -196,7 +187,7 @@ namespace eureka_Maqueen {
   //% color="#6041f1"  weight=25 block="左右とも |%wb| をふんでいる時  " group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
   export function photo_LR_out(wb: whiteblack): boolean {
     switch(wb){
-        case whiteblack.黒:
+        case whiteblack.black:
              if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 0))
              {
             return true;
@@ -204,7 +195,7 @@ namespace eureka_Maqueen {
             return false;
             }
         break;
-        case whiteblack.白:
+        case whiteblack.white:
              if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1))
              {
             return true;
