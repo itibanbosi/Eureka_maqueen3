@@ -116,7 +116,7 @@ namespace eureka_Maqueen {
     }
 
   //% color="#1E90FF" weight=51 blockId=wait_time1
-  //% block="wait time |%second|(sec) " group="1　基本の動き"
+  //% block="Wait time |%second|(sec) " group="1　基本の動き"
   export function wait_time1(second: number): void {
     basic.pause(second*1000);
   }
