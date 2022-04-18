@@ -34,7 +34,7 @@ enum light_sensor{
 //% color="#3943c6" block="Eureka Maqueen" icon="\uf1b9"
 namespace eureka_Maqueen {
     //% color="#3943c6" weight=70　blockId=moving1
-    //% block="|%sinkou_houkou|へ |%time_sec|秒間進む 出力|%Power|" group="基本の動き"
+    //% block="|%sinkou_houkou|へ |%time_sec|秒間進む 出力|%Power|" group="1　基本の動き"
     //% Power.min=0 Power.max=255
     export function car_derection_time(sinkou_houkou: direction, time_sec: number, Power: number): void {
         switch (sinkou_houkou) {
@@ -89,7 +89,7 @@ namespace eureka_Maqueen {
     }
     
     //% color="#3943c6" weight=70　blockId=moving2
-    //% block="|%sinkou_houkou|へ 出力|%Power|" group="基本の動き"
+    //% block="|%sinkou_houkou|へ 出力|%Power|" group="1　基本の動き"
     //% Power.min=0 Power.max=255
     export function car_derection(sinkou_houkou: direction, Power: number): void {
         switch (sinkou_houkou) {
@@ -124,7 +124,7 @@ namespace eureka_Maqueen {
     }
 
   //% color="#1E90FF" weight=51 blockId=wait_time1
-  //% block="待ち時間 |%second| （秒) " group="2　基本の動き"
+  //% block="待ち時間 |%second| （秒) " group="1　基本の動き"
   export function wait_time1(second: number): void {
     basic.pause(second*1000);
   }
