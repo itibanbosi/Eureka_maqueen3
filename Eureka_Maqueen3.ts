@@ -54,21 +54,21 @@ namespace eureka_Maqueen {
                 break;
             case direction.right_circle:
                 maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, Power);
-                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 0);
+                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, Power);
                 basic.pause(time_sec * 1000);
                 maqueen.motorStop(maqueen.Motors.All);
                 basic.pause(100);
                 break;
             case direction.left_circle:
-                maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, Power);
-                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 0);
+                maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, Power);
+                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, Power);
                 basic.pause(time_sec * 1000);
                 maqueen.motorStop(maqueen.Motors.All);
                 basic.pause(100);
                 break;
             case direction.back:
-                maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, Power);
-                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 0);
+                maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, Power);
+                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, Power);
                 basic.pause(time_sec * 1000);
                 maqueen.motorStop(maqueen.Motors.All);
                 basic.pause(100);
@@ -98,15 +98,15 @@ namespace eureka_Maqueen {
                 break;
             case direction.right_circle:
                 maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, Power);
-                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 0);
+                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, Power);
                 break;
             case direction.left_circle:
-                maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, Power);
-                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 0);
+                maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, Power);
+                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, Power);
                 break;
             case direction.back:
-                maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, Power);
-                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 0);
+                maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, Power);
+                maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, Power);
                 break;
             case direction.stop:
                 maqueen.motorStop(maqueen.Motors.All);
