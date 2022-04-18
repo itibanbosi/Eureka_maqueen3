@@ -32,6 +32,7 @@ enum light_sensor{
 }
 
 //% color="#3943c6" block="Eureka Maqueen" icon="\uf1b9"
+
 namespace eureka_Maqueen {
     //% color="#3943c6" weight=70　blockId=moving1
     //% block="|%sinkou_houkou|へ |%time_sec|秒間進む 出力|%Power|" group="1　基本の動き"
@@ -89,7 +90,7 @@ namespace eureka_Maqueen {
     }
     
     //% color="#3943c6" weight=70　blockId=moving2
-    //% block="|%sinkou_houkou|へ 出力|%Power|" group="1　基本の動き"
+    //% block="|%sinkou_houkou|へ　出力|%Power|" group="1　基本の動き"
     //% Power.min=0 Power.max=255
     export function car_derection(sinkou_houkou: direction, Power: number): void {
         switch (sinkou_houkou) {
@@ -130,7 +131,7 @@ namespace eureka_Maqueen {
   }
 
   //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="3 超音波きょりｾﾝｻｰ"
-  //% limit.min=0 limit.max=30
+  //% limit.min=5 limit.max=30
   export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
     switch(nagasa){
         case kyori.短い:
@@ -154,14 +155,14 @@ namespace eureka_Maqueen {
   export function photo_R_out( wb: whiteblack): boolean {
     switch(wb){
         case whiteblack.黒:
-            if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
+            if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 0)) {
             return true;
             } else {
             return false;
             }
         break;
         case whiteblack.白:
-            if  ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
+            if  ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
             return true;
             } else {
             return false;
@@ -176,14 +177,14 @@ namespace eureka_Maqueen {
 
     switch(wb){
         case whiteblack.黒:
-            if  ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
+            if  ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
             return true;
             } else {
             return false;
             }
         break;
         case whiteblack.白:
-             if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1)) {
+             if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 0)) {
             return true;
             } else {
             return false;
@@ -196,7 +197,7 @@ namespace eureka_Maqueen {
   export function photo_LR_out(wb: whiteblack): boolean {
     switch(wb){
         case whiteblack.黒:
-             if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 1) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 1))
+             if ((maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0) && (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 0))
              {
             return true;
             } else {
