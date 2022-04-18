@@ -8,8 +8,8 @@ enum direction {
     stop
 }
 enum whiteblack{
-黒,
-白,
+    黒,
+    白,
 }
 
 enum lotation{
