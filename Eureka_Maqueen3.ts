@@ -26,7 +26,7 @@ enum kyori{
 
 namespace eureka_Maqueen {
     //% color="#3943c6" weight=70　blockId=moving1
-    //% block="|%sinkou_houkou|へ |%time_sec|秒間進む 出力|%Power|" group="1　基本の動き"
+    //% block="To|%sinkou_houkou|  |%time_sec|(sec) Power|%Power|" group="1　基本の動き"
     //% Power.min=0 Power.max=255
     export function car_derection_time(sinkou_houkou: direction, time_sec: number, Power: number): void {
         switch (sinkou_houkou) {
