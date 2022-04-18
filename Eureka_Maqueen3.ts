@@ -184,7 +184,7 @@ namespace eureka_Maqueen {
     }
   }
  
-  //% color="#6041f1"  weight=25 block="Stepped onboth sides|%wb|" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
+  //% color="#6041f1"  weight=25 block="Stepped on both sides|%wb|" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
   export function photo_LR_out(wb: whiteblack): boolean {
     switch(wb){
         case whiteblack.black:
